@@ -1,3 +1,19 @@
+//solved
+var groupAnagrams = function(strs) {
+    let obj = {};
+    for(let str of strs){
+       let letters = str.split("").sort().join("");
+       obj[letters] ? obj[letters].push(str) : obj[letters] = [str];
+       //console.log(obj);
+    }
+    return Object.values(obj);
+};
+
+
+
+
+
+//runtime over
 var groupAnagrams = function(strs) {
     let newStrs = [];
     strs.map(a => {
