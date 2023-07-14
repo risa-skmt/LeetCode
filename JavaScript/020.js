@@ -41,3 +41,35 @@ var isValid = function(s) {
 
     
 };
+
+
+
+//more simple version
+var isValid = function(s) {
+    let arr = s.split("");
+
+    if(arr.length%2 === 1 || arr.includes("(")&&!arr.includes(")") || arr.includes("[")&&!arr.includes("]") || arr.includes("{")&&!arr.includes("}")){
+        return false;
+    }
+    
+    let store = [];
+    for(let i=0; i<s.length; i++){
+        if(arr[i] === "(" || arr[i] === "{" || arr[i] === "["){
+            store.push(arr[i]);
+        }else {
+            if(store.length === 0){
+                return false;
+            }else {
+                let last = store.pop();
+                if(arr[i] === ")" && !(last === "(") || arr[i] ==="]" && !(last==="[" ) || arr[i]==="}" && !(last==="{") ){
+                    return false;
+                }
+            }
+        }
+    }
+    
+    if(store.length !== 0){
+        return false;
+    }
+    return true;
+};
